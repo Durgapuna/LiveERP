@@ -73,7 +73,7 @@ public class ExcelFileUtil {
 	{
 		CellStyle style = wb.createCellStyle();
 		Font font = wb.createFont();
-		//colour
+	   //colour
 		font.setColor(IndexedColors.BLUE.getIndex());
 		font.setBold(true);
 		style.setFont(font);
@@ -87,7 +87,7 @@ public class ExcelFileUtil {
 
 	public static void main(String[] args) throws Throwable {
 		ExcelFileUtil xl = new ExcelFileUtil("D:/book1.xlsx");
-		
+		xl.getCellData(null, 0, 0);
 		
 		
 	}
