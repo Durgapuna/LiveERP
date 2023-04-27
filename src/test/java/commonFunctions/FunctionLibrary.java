@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class FunctionLibrary {
 	
@@ -50,6 +51,10 @@ else if(LocatorType.equalsIgnoreCase("xpath"))
 {
 	mywait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorValue)));
 }
+else if(LocatorType.equalsIgnoreCase("id"))
+{
+	mywait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(LocatorValue)));
+}
 else 
 {
 	mywait.until(ExpectedConditions.visibilityOfElementLocated(By.id(LocatorValue)));
@@ -83,7 +88,29 @@ public static void typeAction(WebDriver driver,String LocatorType, String Locato
 		{
 			driver.findElement(By.id(LocatorValue)).sendKeys(Keys.ENTER);
 		}
+		else if(Locatortype.equalsIgnoreCase("name"))
+		{
+			driver.findElement(By.id(LocatorValue)).sendKeys(Keys.ENTER);
+		}
 	}
+	public static void validateTitle (WebDriver driver,String Expected_Title )
+	{
+    String Actual_Title = driver.getTitle();
+    try {
+    Assert.assertEquals(Expected_Title, Actual_Title,"Title is not matching");
+    }catch(Throwable t)
+    {
+    	System.out.println(t.getMessage());
+    }
+	}
+	public static void closeBrowser(WebDriver driver)
+	{
+		driver.quit();
+	}
+
+		
+	
+
 	
 	
 
