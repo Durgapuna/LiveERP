@@ -6,6 +6,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,16 +24,22 @@ public class FunctionLibrary {
 			
 		conpro = new Properties();
 		conpro.load(new FileInputStream("./PropertyFile/Environment.properties"));
-		if(conpro.getProperty("Browser").equalsIgnoreCase("chrome")) {
+		if(conpro.getProperty("Browser").equalsIgnoreCase("chrome"))
+		{
+			driver = new ChromeDriver();
+			driver.manage().window().maximize();
+			driver.manage().deleteAllCookies();
 			
-		}else if(conpro.getProperty("Browser").equalsIgnoreCase("firefox"))
+			
+		}
+		else if(conpro.getProperty("Browser").equalsIgnoreCase("firefox"))
 		{
 			driver = new FirefoxDriver();
 			driver.manage().deleteAllCookies();	
-			}
+	    }
 	else
 	{
-	System.out.println("");	
+	System.out.println("Browser is not matching");	
 	}
 return driver;
 }
@@ -115,14 +122,18 @@ public static void typeAction(WebDriver driver,String LocatorType, String Locato
 		ac.moveToElement(driver.findElement(By.xpath("")));
 		
 	}
-	public static void categoryTable(WebDriver driver, String ExpectedData)
+	public static void categoryTable(WebDriver driver, String ExpectedData) throws Throwable
 	{
 		//if search already displayed no need to click search panel
 		if(!driver.findElement(By.xpath(conpro.getProperty("search-textbox"))).isDisplayed())
 		driver.findElement(By.xpath(conpro.getProperty("search-panel"))).click();
  driver.findElement(By.xpath(conpro.getProperty("search-textbox"))).sendKeys(ExpectedData);
  Thread.sleep(3000);
- driver.findElement(By.xpath(conpro.getProperty(("search-button")));
+ driver.findElement(By.xpath(conpro.getProperty("search-button")));
+ 
+ 
+ 
+ 
  
  
 	

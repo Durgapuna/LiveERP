@@ -5,7 +5,7 @@ import commonFunctions.FunctionLibrary;
 
 public class DriverScript extends FunctionLibrary {
 
-	String inputpath ="./FileInput\\DataEngine.xlsx";
+	String inputpath ="./FileInput/DataEngine.xlsx";
 	String outputpath="./FileOutput/HybridResults.xlsx";
 	
 	public void startTest() throws Throwable{

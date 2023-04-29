@@ -35,9 +35,12 @@ public class ExcelFileUtil {
 	public String getCellData(String SheetName,int row , int column)
 	{
 		String data = "";
-		if(wb.getSheet(SheetName).getRow(row).getCell(column).getCellType()==Cell.CELL_TYPE_NUMERIC) {
+		if(wb.getSheet(SheetName).getRow(row).getCell(column).getCellType()==Cell.CELL_TYPE_NUMERIC) 
+		{
+			//read integer type cell data
 			int celldata = (int)wb.getSheet(SheetName).getRow(row).getCell(column).getNumericCellValue();
 			data = String.valueOf(celldata);
+			
 			
 			
 		}else {

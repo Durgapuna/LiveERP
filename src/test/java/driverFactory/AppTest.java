@@ -1,6 +1,5 @@
 package driverFactory;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.All;
 import org.testng.annotations.Test;
 
 public class AppTest {
