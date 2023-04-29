@@ -15,10 +15,11 @@ public class DriverScript extends FunctionLibrary {
 		
 		for(int i=1;i<=xl.rowCount("MasterTestCases");i++)
 		{
-			
+		
 			if(xl.getCellData("MasterTestCases", i, 2).equalsIgnoreCase("Y"))
 			{
-				String TCModule = xl.getCellData("MasterTestCases" , i, i);
+				//stroe corresponding sheet into variable
+				String TCModule = xl.getCellData("MasterTestCases" , i, 1);
 				for(int j=1;j<=xl.rowCount(TCModule);j++)
 				{
 					String Description =xl.getCellData(TCModule, j, 0);
@@ -57,6 +58,14 @@ public class DriverScript extends FunctionLibrary {
 						{
 							FunctionLibrary.closeBrowser(driver);
 						}
+						else if (ObjectType.equalsIgnoreCase("mouseClick"))
+						{
+							FunctionLibrary.mouseClick(driver);
+						}
+						else if(ObjectType.equalsIgnoreCase("categoryTable"))
+						{
+							FunctionLibrary.categoryTable(driver, TestData);
+						}
 						//write as pass into status cell TCModule
 						xl.setCelldata(TCModule, j, 5, "Pass", outputpath);
 						Module_status="True";					
@@ -68,11 +77,12 @@ public class DriverScript extends FunctionLibrary {
                         }
 					if(Module_status.equalsIgnoreCase("True"))
 					{
-						
+						xl.setCelldata("MasterTestCases", i, 3, "Pass", outputpath);
 					}
 					else
 					{
-						
+						xl.setCelldata("MasterTestCases", i, 3, "Fail", outputpath);
+	
 					}
 					
 				}
