@@ -1,4 +1,4 @@
-package Utilities;
+package utilities;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -43,9 +43,10 @@ public class ExcelFileUtil {
 			
 			
 			
-		}else {
+		}else
+		{
 			data = wb.getSheet(SheetName).getRow(row).getCell(column).getStringCellValue();		
-			}
+	    }
 	
 	return data;
 	}
@@ -87,15 +88,9 @@ public class ExcelFileUtil {
 	FileOutputStream fo = new FileOutputStream(WriteExcel);
 	wb.write(fo);
 	}
-
-	public static void main(String[] args) throws Throwable {
-		ExcelFileUtil xl = new ExcelFileUtil("D:/book1.xlsx");
-		xl.getCellData(null, 0, 0);
-		
 		
 	}
 	
 	
 	
 
-}
